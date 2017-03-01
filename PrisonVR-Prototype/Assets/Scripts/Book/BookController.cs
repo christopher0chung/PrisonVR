@@ -46,6 +46,8 @@ public class BookController : MonoBehaviour {
                 rightPage9.localEulerAngles = Vector3.Lerp(new Vector3(0, 0, 0), new Vector3(12.95f, 0, 0), _bookCloseOpen);
                 rightPage10.localEulerAngles = Vector3.Lerp(new Vector3(0, 0, 0), new Vector3(-25.62f, 0, 0), _bookCloseOpen);
 
+                leftPageChunk.localPosition = Vector3.Lerp(new Vector3(.14f, .9f, 2.910006f), new Vector3(.14f, .865f, 2.910006f), _bookCloseOpen);
+                rightPageChunk.localPosition = Vector3.Lerp(new Vector3(.14f, -.9f, 2.910006f), new Vector3(.14f, -.865f, 2.910006f), _bookCloseOpen);
             }
         }
     }
@@ -77,6 +79,9 @@ public class BookController : MonoBehaviour {
     [SerializeField] private Transform rightPage8;
     [SerializeField] private Transform rightPage9;
     [SerializeField] private Transform rightPage10;
+
+    [SerializeField] private Transform leftPageChunk;
+    [SerializeField] private Transform rightPageChunk;
 
 
     void Start()
