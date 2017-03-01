@@ -36,10 +36,13 @@ public class BookOpenCloseController : MonoBehaviour {
 
     private float openCloseFloat;
 
+    private BookController myBC;
+
 	// Use this for initialization
 	void Start () {
         myCam = Camera.main.transform;
         runningOCA = Closing;
+        myBC = GetComponentInChildren<BookController>();
 	}
 	
 	// Update is called once per frame
@@ -62,10 +65,12 @@ public class BookOpenCloseController : MonoBehaviour {
     {
         openCloseFloat += Time.deltaTime;
         openCloseFloat = Mathf.Clamp01(openCloseFloat);
+        myBC.bookCloseOpen = openCloseFloat;
     }
     private void Closing()
     {
         openCloseFloat -= Time.deltaTime;
         openCloseFloat = Mathf.Clamp01(openCloseFloat);
+        myBC.bookCloseOpen = openCloseFloat;
     }
 }
