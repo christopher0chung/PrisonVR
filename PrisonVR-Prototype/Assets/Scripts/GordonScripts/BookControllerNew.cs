@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BookController : MonoBehaviour {
-    private float adjuster;
+public class BookControllerNew : MonoBehaviour {
+    public float bookOpenSpeed = 10;
 
+    private float adjuster;
     private float _bookCloseOpen;
     [SerializeField] public float bookCloseOpen
     {
@@ -89,18 +90,27 @@ public class BookController : MonoBehaviour {
         bookCloseOpen = 0;
     }
 
-    //void Update()
-    //{
-    //    if (Input.GetKey(KeyCode.W))
-    //    {
-    //        adjuster += Time.deltaTime / 2;
-    //    }
-    //    else if (Input.GetKey(KeyCode.S))
-    //    {
-    //        adjuster -= Time.deltaTime / 2;
-    //    }
+    void Update()
+    {
+        if (Input.GetKey(KeyCode.W))
+        {
+            adjuster += Time.deltaTime / 2 * bookOpenSpeed;
+        }
+        else if (Input.GetKey(KeyCode.S))
+        {
+            adjuster -= Time.deltaTime / 2 * bookOpenSpeed;
+        }
 
-    //    adjuster = Mathf.Clamp01(adjuster);
-    //    bookCloseOpen = adjuster;
-    //}
+
+        if(this.transform.rotation.eulerAngles.x > 80 && this.transform.rotation.eulerAngles.x < 100) {
+            adjuster += Time.deltaTime / 2 * bookOpenSpeed;
+        } else {
+            adjuster -= Time.deltaTime / 2 * bookOpenSpeed;
+        }
+
+        adjuster = Mathf.Clamp01(adjuster);
+        bookCloseOpen = adjuster;
+    }
+
+
 }
