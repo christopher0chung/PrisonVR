@@ -90,20 +90,18 @@ public class BookController : MonoBehaviour {
         bookCloseOpen = 0;
     }
 
-    void Update()
-    {
-        if (Input.GetKey(KeyCode.W))
-        {
-            adjuster += Time.deltaTime / 2;
-        }
-        else if (Input.GetKey(KeyCode.S))
-        {
-            adjuster -= Time.deltaTime / 2;
-        }
+    //void Update()
+    //{
+    //    if (Input.GetKey(KeyCode.W))
+    //    {
+    //        adjuster += Time.deltaTime / 2;
+    //    }
+    //    else if (Input.GetKey(KeyCode.S))
+    //    {
+    //        adjuster -= Time.deltaTime / 2;
+    //    }
 
-        adjuster = Mathf.Clamp01(adjuster);
-        bookCloseOpen = adjuster;
-    }
-
-
+    //    adjuster = Mathf.Clamp01(adjuster);
+    //    bookCloseOpen = adjuster;
+    //}
 }
