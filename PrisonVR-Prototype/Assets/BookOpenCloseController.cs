@@ -35,7 +35,7 @@ public class BookOpenCloseController : MonoBehaviour {
     public AnimationCurve myAC;
 
     private float openCloseFloat;
-    private float normalizedTime;
+    [SerializeField] private float normalizedTime;
 
     private BookController myBC;
 
