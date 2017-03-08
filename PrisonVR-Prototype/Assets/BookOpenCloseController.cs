@@ -5,7 +5,7 @@ using UnityEngine.Events;
 
 public class BookOpenCloseController : MonoBehaviour {
 
-    private Transform myCam;
+    public Transform myCam;
     private bool _open;
     private bool open
     {
@@ -67,16 +67,13 @@ public class BookOpenCloseController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		myCam = GameObject.Find("VRCamera").transform;
+		//myCam = GameObject.Find("VRCamera").transform;
         runningOCA = Closing;
         myBC = GetComponentInChildren<BookController>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if (myCam == null) {
-			myCam = GameObject.Find("VRCamera").transform;
-		}
         if (Vector3.Angle(this.transform.right, -myCam.forward) < 30f)
         {
             open = true;
@@ -86,7 +83,14 @@ public class BookOpenCloseController : MonoBehaviour {
             open = false;
         }
 
-        runningOCA();
+        if (runningOCA != null)
+        {
+            runningOCA();
+        }
+        else
+        {
+            Debug.Log("No running oca");
+        }
 		
 	}
 
