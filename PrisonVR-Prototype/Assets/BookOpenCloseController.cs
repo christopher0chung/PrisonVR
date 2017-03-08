@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class BookOpenCloseController : MonoBehaviour {
 
@@ -35,9 +36,34 @@ public class BookOpenCloseController : MonoBehaviour {
     public AnimationCurve myAC;
 
     private float openCloseFloat;
+
+    private float _passedValue;
+    private float passedValue
+    {
+        get
+        {
+            return _passedValue;
+        }
+        set
+        {
+            if (value != _passedValue)
+            {
+                _passedValue = value;
+                if (_passedValue == 0)
+                    OnClose.Invoke();
+                else if (_passedValue == 1)
+                    OnOpen.Invoke();
+            }
+        }
+    }
+
+
     [SerializeField] private float normalizedTime;
 
     private BookController myBC;
+
+    public UnityEvent OnOpen;
+    public UnityEvent OnClose;
 
 	// Use this for initialization
 	void Start () {
@@ -65,13 +91,13 @@ public class BookOpenCloseController : MonoBehaviour {
     private void Opening()
     {
         openCloseFloat += Time.deltaTime/normalizedTime;
-        openCloseFloat = Mathf.Clamp01(openCloseFloat);
-        myBC.bookCloseOpen = myAC.Evaluate(openCloseFloat);
+        passedValue = Mathf.Clamp01(openCloseFloat);
+        myBC.bookCloseOpen = myAC.Evaluate(passedValue);
     }
     private void Closing()
     {
         openCloseFloat -= Time.deltaTime / normalizedTime;
-        openCloseFloat = Mathf.Clamp01(openCloseFloat);
-        myBC.bookCloseOpen = myAC.Evaluate(openCloseFloat);
+        passedValue = Mathf.Clamp01(openCloseFloat);
+        myBC.bookCloseOpen = myAC.Evaluate(passedValue);
     }
 }
