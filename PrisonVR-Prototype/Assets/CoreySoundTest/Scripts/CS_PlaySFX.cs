@@ -43,4 +43,15 @@ public class CS_PlaySFX : MonoBehaviour {
 		t_SFX.GetComponent<AudioSource> ().Play ();
 		DestroyObject(t_SFX, g_SFX.length);
 	}
+
+	public void PlaySFX (AudioClip g_SFX, float g_Pitch, Vector3 position) {
+		GameObject t_SFX = Instantiate (myPrefabSFX) as GameObject;
+		t_SFX.transform.position = position;
+		t_SFX.name = "SFX_" + g_SFX.name;
+		t_SFX.GetComponent<AudioSource> ().clip = g_SFX;
+		t_SFX.GetComponent<AudioSource> ().pitch = g_Pitch;
+		t_SFX.GetComponent<AudioSource> ().outputAudioMixerGroup = SFXGroup;
+		t_SFX.GetComponent<AudioSource> ().Play ();
+		DestroyObject(t_SFX, g_SFX.length);
+	}
 }

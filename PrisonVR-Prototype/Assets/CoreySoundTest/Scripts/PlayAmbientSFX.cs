@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlaySFX : MonoBehaviour {
+public class PlayAmbientSFX : MonoBehaviour {
 
 	public AudioClip[] sfxClips;
 	AudioSource thisSource;
