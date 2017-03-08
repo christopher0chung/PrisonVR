@@ -21,7 +21,7 @@ public class BookSounds : MonoBehaviour {
 	void Start () {
 		sfxPlayer = gameObject.GetComponent<CS_PlaySFX> ();
 
-		GameObject bookObject = GameObject.Find ("Book");
+		GameObject bookObject = GameObject.Find ("Book2");
 
 		transform.position = bookObject.transform.position;
 		transform.SetParent (bookObject.transform);
