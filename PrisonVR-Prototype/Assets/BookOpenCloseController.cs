@@ -35,6 +35,7 @@ public class BookOpenCloseController : MonoBehaviour {
     public AnimationCurve myAC;
 
     private float openCloseFloat;
+    [SerializeField] private float normalizedTime;
 
     private BookController myBC;
 
@@ -63,14 +64,14 @@ public class BookOpenCloseController : MonoBehaviour {
 
     private void Opening()
     {
-        openCloseFloat += Time.deltaTime;
+        openCloseFloat += Time.deltaTime/normalizedTime;
         openCloseFloat = Mathf.Clamp01(openCloseFloat);
-        myBC.bookCloseOpen = openCloseFloat;
+        myBC.bookCloseOpen = myAC.Evaluate(openCloseFloat);
     }
     private void Closing()
     {
-        openCloseFloat -= Time.deltaTime;
+        openCloseFloat -= Time.deltaTime / normalizedTime;
         openCloseFloat = Mathf.Clamp01(openCloseFloat);
-        myBC.bookCloseOpen = openCloseFloat;
+        myBC.bookCloseOpen = myAC.Evaluate(openCloseFloat);
     }
 }
