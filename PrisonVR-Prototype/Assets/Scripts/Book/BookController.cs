@@ -45,8 +45,8 @@ public class BookController : MonoBehaviour {
                 rightPage9.localEulerAngles = Vector3.Lerp(new Vector3(0, 0, 0), new Vector3(12.95f, 0, 0), _bookCloseOpen);
                 rightPage10.localEulerAngles = Vector3.Lerp(new Vector3(0, 0, 0), new Vector3(-25.62f, 0, 0), _bookCloseOpen);
 
-                leftPageChunk.localPosition = Vector3.Lerp(new Vector3(.14f, .9f, 2.910006f), new Vector3(.14f, .865f, 2.910006f), _bookCloseOpen);
-                rightPageChunk.localPosition = Vector3.Lerp(new Vector3(.14f, -.9f, 2.910006f), new Vector3(.14f, -.865f, 2.910006f), _bookCloseOpen);
+                leftPageChunk.localPosition = Vector3.Lerp(new Vector3(-.04f, .9f, 2.910006f), new Vector3(-.04f, .865f, 2.910006f), _bookCloseOpen);
+                rightPageChunk.localPosition = Vector3.Lerp(new Vector3(-.04f, -.9f, 2.910006f), new Vector3(-.04f, -.865f, 2.910006f), _bookCloseOpen);
             }
         }
     }
