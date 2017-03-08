@@ -67,15 +67,17 @@ public class BookOpenCloseController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        myCam = Camera.main.transform;
+		myCam = GameObject.Find("VRCamera").transform;
         runningOCA = Closing;
         myBC = GetComponentInChildren<BookController>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-
-        if (Vector3.Angle(transform.right, -myCam.forward) < 30f)
+		if (myCam == null) {
+			myCam = GameObject.Find("VRCamera").transform;
+		}
+        if (Vector3.Angle(this.transform.right, -myCam.forward) < 30f)
         {
             open = true;
         }
