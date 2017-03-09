@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 0ff693a9538266445ad531ef453c8c4f
-timeCreated: 1489076721
+guid: 62b97307e53f30d44928cff1dfe62578
+timeCreated: 1489082474
 licenseType: Pro
 ModelImporter:
   serializedVersion: 19
@@ -9,7 +9,7 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Prison_toilet_object_1
+    4300000: object_2
   materials:
     importMaterials: 1
     materialName: 0
