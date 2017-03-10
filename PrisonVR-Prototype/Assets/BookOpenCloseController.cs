@@ -74,6 +74,9 @@ public class BookOpenCloseController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
+        Debug.Log(Vector3.Angle(this.transform.right, -myCam.forward));
+
         if (Vector3.Angle(this.transform.right, -myCam.forward) < 30f)
         {
             open = true;
@@ -83,7 +86,7 @@ public class BookOpenCloseController : MonoBehaviour {
             open = false;
         }
 
-        if (runningOCA != null)
+        if (runningOCA != null && transform.parent != null)
         {
             runningOCA();
         }
@@ -97,13 +100,15 @@ public class BookOpenCloseController : MonoBehaviour {
     private void Opening()
     {
         openCloseFloat += Time.deltaTime/normalizedTime;
-        passedValue = Mathf.Clamp01(openCloseFloat);
+        openCloseFloat = Mathf.Clamp01(openCloseFloat);
+        passedValue = openCloseFloat;
         myBC.bookCloseOpen = myAC.Evaluate(passedValue);
     }
     private void Closing()
     {
         openCloseFloat -= Time.deltaTime / normalizedTime;
-        passedValue = Mathf.Clamp01(openCloseFloat);
+        openCloseFloat = Mathf.Clamp01(openCloseFloat);
+        passedValue = openCloseFloat;
         myBC.bookCloseOpen = myAC.Evaluate(passedValue);
     }
 }
