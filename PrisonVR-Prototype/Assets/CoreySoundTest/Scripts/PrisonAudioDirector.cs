@@ -10,26 +10,18 @@ public class PrisonAudioDirector : MonoBehaviour {
 
 	public static PrisonAudioDirector instance = null;
 
-	//public List<GameObject> soundableObjects;
 	
 
 	//POPULATE THIS
 	public List<AudioClip> audioClipPool;
 	public AudioClip concreteImpact, steelImpact, steelDoorImpact, mattressImpact, waterImpact;
 
-
-	public float thisClipPosition;
-
-
-
 	[SerializeField] GameObject myPrefabSFX;
 
 	[SerializeField] AudioSource myAudioSource;
 
-	[SerializeField] AudioMixer dadaMixer;
 
 	[SerializeField] AudioMixerGroup SFXGroup;
-
 
 
 

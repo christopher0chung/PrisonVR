@@ -7,7 +7,6 @@ public enum soundMaterial {Concrete = 1, Steel = 2, SteelDoor = 3, Water = 4, Ma
 public class SoundMaterial : MonoBehaviour {
 
 	public soundMaterial thisMaterial;
-	public AudioClip concreteImpact, steelImpact, steelDoorImpact, mattressImpact, waterImpact;
 
 	float soundCooldown = 0.0f;
 	float cooldownTime = 0.5f;
