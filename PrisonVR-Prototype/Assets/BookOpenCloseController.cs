@@ -75,7 +75,7 @@ public class BookOpenCloseController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        Debug.Log(Vector3.Angle(this.transform.right, -myCam.forward));
+        //Debug.Log(Vector3.Angle(this.transform.right, -myCam.forward));
 
         if (Vector3.Angle(this.transform.right, -myCam.forward) < 30f)
         {
@@ -92,7 +92,7 @@ public class BookOpenCloseController : MonoBehaviour {
         }
         else
         {
-            Debug.Log("No running oca");
+            //Debug.Log("No running oca");
         }
 		
 	}

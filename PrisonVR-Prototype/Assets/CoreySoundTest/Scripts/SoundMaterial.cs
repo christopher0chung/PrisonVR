@@ -7,7 +7,6 @@ public enum soundMaterial {Concrete = 1, Steel = 2, SteelDoor = 3, Water = 4, Ma
 public class SoundMaterial : MonoBehaviour {
 
 	public soundMaterial thisMaterial;
-	public AudioClip concreteImpact, steelImpact, steelDoorImpact, mattressImpact, waterImpact;
 
 	float soundCooldown = 0.0f;
 	float cooldownTime = 0.5f;
@@ -26,20 +25,22 @@ public class SoundMaterial : MonoBehaviour {
 		if (other.gameObject.name == "SoundCollider" && soundCooldown > cooldownTime) {
 			switch (thisMaterial) {
 				case soundMaterial.Steel:
-					PrisonAudioDirector.instance.Play3DSFX (PrisonAudioDirector.instance.steelImpact, other.gameObject.transform.position);
+					PrisonAudioDirector.instance.Play3DSFX (PrisonAudioDirector.instance.steelImpact, other.gameObject.transform.position, 0.2f);
 					break;
 				case soundMaterial.SteelDoor:
-					PrisonAudioDirector.instance.Play3DSFX (PrisonAudioDirector.instance.steelDoorImpact, other.gameObject.transform.position);
+					PrisonAudioDirector.instance.Play3DSFX (PrisonAudioDirector.instance.steelDoorImpact, other.gameObject.transform.position, 0.2f);
 					break;
 				case soundMaterial.Water:
-					PrisonAudioDirector.instance.Play3DSFX (PrisonAudioDirector.instance.waterImpact, other.gameObject.transform.position);
+					PrisonAudioDirector.instance.Play3DSFX (PrisonAudioDirector.instance.waterImpact, other.gameObject.transform.position, 0.2f);
 					break;
 				case soundMaterial.Mattress:
-					PrisonAudioDirector.instance.Play3DSFX (PrisonAudioDirector.instance.mattressImpact, other.gameObject.transform.position);
+					PrisonAudioDirector.instance.Play3DSFX (PrisonAudioDirector.instance.mattressImpact, other.gameObject.transform.position, 0.2f);
 					break;
-				default:
-					PrisonAudioDirector.instance.Play3DSFX (PrisonAudioDirector.instance.concreteImpact, other.gameObject.transform.position);
+				default: 
+					int index = Random.Range (0, PrisonAudioDirector.instance.concreteImpact.Length);
+					PrisonAudioDirector.instance.Play3DSFX (PrisonAudioDirector.instance.concreteImpact[index], other.gameObject.transform.position, 0.2f);
 					break;
+
 			}
 
 			soundCooldown = 0f;
