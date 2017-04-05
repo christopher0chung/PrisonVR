@@ -14,7 +14,8 @@ public class PrisonAudioDirector : MonoBehaviour {
 
 	//POPULATE THIS
 	public List<AudioClip> audioClipPool;
-	public AudioClip concreteImpact, steelImpact, steelDoorImpact, mattressImpact, waterImpact;
+	public AudioClip[] concreteImpact;
+	public AudioClip steelImpact, steelDoorImpact, mattressImpact, waterImpact;
 
 	[SerializeField] GameObject myPrefabSFX;
 
@@ -73,11 +74,12 @@ public class PrisonAudioDirector : MonoBehaviour {
 		DestroyObject(t_SFX, g_SFX.length);
 	}
 
-	public void Play3DSFX(AudioClip g_SFX, Vector3 g_position) {
+	public void Play3DSFX(AudioClip g_SFX, Vector3 g_position, float g_pitchJitter) {
 		GameObject t_SFX = Instantiate (myPrefabSFX) as GameObject;
 		t_SFX.name = "SFX_" + g_SFX.name;
 		t_SFX.transform.position = g_position;
 		t_SFX.GetComponent<AudioSource> ().clip = g_SFX;
+		t_SFX.GetComponent<AudioSource> ().pitch = (1f + (Random.value * g_pitchJitter)-(0.5f * g_pitchJitter));
 		t_SFX.GetComponent<AudioSource> ().outputAudioMixerGroup = SFXGroup;
 		t_SFX.GetComponent<AudioSource> ().Play ();
 		DestroyObject(t_SFX, g_SFX.length);

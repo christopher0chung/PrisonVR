@@ -34,6 +34,8 @@ public class Advertisement: MonoBehaviour {
 	public void PlayAd () { 
 		Debug.Log ("Play Ad");
 
+		//this code is annoying; movie textures are apparently really finnicky about starting/stopping
+
 		movieSource.Stop();
 		currentMovie.Stop();
 		GetComponent<Renderer>().material.mainTexture = movieTextures[(index + 1) % movieTextures.Length];
