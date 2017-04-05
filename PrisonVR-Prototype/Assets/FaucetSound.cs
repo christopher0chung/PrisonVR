@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class FaucetSound : MonoBehaviour {
 
@@ -33,6 +34,9 @@ public class FaucetSound : MonoBehaviour {
 
 	AudioSource[] myAudioSources;
 
+	public Advertisement adScript;
+
+
 	// Use this for initialization
 	void Start () {
 
@@ -60,6 +64,7 @@ public class FaucetSound : MonoBehaviour {
 		myAudioSources [0].Play ();
 		myAudioSources [1].PlayDelayed (0.2f);
 		myAudioSources [1].loop = true;
+		adScript.PlayAd ();
 	}
 	void StopSink() {
 		myAudioSources [2].Play ();

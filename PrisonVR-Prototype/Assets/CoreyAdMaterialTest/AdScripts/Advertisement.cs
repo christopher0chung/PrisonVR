@@ -2,22 +2,46 @@
 using System.Collections;
 
 public class Advertisement: MonoBehaviour {
-	public MovieTexture movTexture;
-	public AudioClip movieAudio;
+	public MovieTexture[] movieTextures;
+	public AudioClip[] movieAudio;
+
+	MovieTexture currentMovie;
 
 	AudioSource movieSource;
 
+	float playTime;
+
+	int index;
+
 	void Start() {
 		
-		GetComponent<Renderer>().material.mainTexture = movTexture;
-		GetComponent<AudioSource> ();
+		GetComponent<Renderer>().material.mainTexture = movieTextures[0];
+		movieSource = GetComponent<AudioSource> ();
+		movieSource.clip = movieAudio[0];
+		currentMovie = movieTextures [0];
+	
+		index = 0;
+	}
 
+	void Update() {
+
+		if (movieSource.isPlaying) {
+			//Debug.Log ("isPLaying");
+		}
+		
 	}
 
 	public void PlayAd () { 
+		Debug.Log ("Play Ad");
 
-		movTexture.Play();
+		movieSource.Stop();
+		currentMovie.Stop();
+		GetComponent<Renderer>().material.mainTexture = movieTextures[(index + 1) % movieTextures.Length];
+		currentMovie = movieTextures [(index + 1) % movieTextures.Length];
+		movieSource.clip = movieAudio[(index+1) % movieAudio.Length];
 		movieSource.Play();
+		movieTextures[(index + 1) % movieTextures.Length].Play();
 
+		index++;
 	}
 }
