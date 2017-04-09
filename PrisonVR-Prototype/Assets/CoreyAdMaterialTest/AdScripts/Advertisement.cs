@@ -21,6 +21,8 @@ public class Advertisement: MonoBehaviour {
 		currentMovie = movieTextures [0];
 	
 		index = 0;
+
+		PlayAd ();
 	}
 
 	void Update() {
@@ -32,7 +34,7 @@ public class Advertisement: MonoBehaviour {
 	}
 
 	public void PlayAd () { 
-		Debug.Log ("Play Ad");
+		//Debug.Log ("Play Ad");
 
 		//this code is annoying; movie textures are apparently really finnicky about starting/stopping
 
