@@ -2,15 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ButtonPressPercent : MonoBehaviour {
+public class ButtonPressPercent : MonoBehaviour
+{
 
     [SerializeField]
     float speed;
 
-	//public Vector3 actuationDirection;
-	//public Vector3 fullyEngagedButtonPosition;
-	Vector3 startPosition;
-	[SerializeField] float maxDistance;
+    //public Vector3 actuationDirection;
+    //public Vector3 fullyEngagedButtonPosition;
+    Vector3 startPosition;
+    [SerializeField]
+    float maxDistance;
 
     // if inContact is being turned true, it locks down free to move.
     // inContact can be switched back to false independently of free to move based on timer.
@@ -31,12 +33,14 @@ public class ButtonPressPercent : MonoBehaviour {
     private float contactTimer;
 
     public float percentActuated = 0;
-	
-	void Start () {
-		startPosition = transform.position;
-	}
 
-	void Update () {
+    void Start()
+    {
+        startPosition = transform.position;
+    }
+
+    void Update()
+    {
         if (!inContact)
             MoveTowardsMax();
 
