@@ -33,31 +33,26 @@ public class ButtonPressPercent : MonoBehaviour {
     public float percentActuated = 0;
 	
 	void Start () {
-		startPosition = transform.localPosition;
-		//maxDistance = Vector3.Distance(MultiplyVectorAxisAbs(startPosition, actuationDirection), MultiplyVectorAxisAbs(fullyEngagedButtonPosition, actuationDirection));
-
-        //Why?
-		//maxDistance -= GetSingleAxisPosition(transform.localScale, actuationDirection) * 0.5f;
+		startPosition = transform.position;
 	}
 
 	void Update () {
-		//percentActuated = GetPercentActuated();
         if (!inContact)
             MoveTowardsMax();
-	}
-
-    void OnCollisionStay(Collision other)
-    {
-        if (other.gameObject.tag == "Hand")
-            inContact = true;
 
         ContactTimer();
         ThrowPercent();
     }
 
+    void OnCollisionStay(Collision other)
+    {
+        if (other.gameObject.tag == "Hand")
+            inContact = true;
+    }
+
     void MoveTowardsMax()
     {
-        GetComponent<Rigidbody>().MovePosition(Vector3.MoveTowards(transform.position, transform.root.position + Vector3.up * maxDistance, speed * Time.deltaTime));
+        GetComponent<Rigidbody>().MovePosition(Vector3.MoveTowards(transform.position, startPosition + transform.up * maxDistance, speed * Time.deltaTime));
     }
 
     void ContactTimer()
@@ -71,29 +66,6 @@ public class ButtonPressPercent : MonoBehaviour {
 
     void ThrowPercent()
     {
-        percentActuated = Mathf.Clamp01(1 - Vector3.Distance(transform.position, transform.root.position) / maxDistance);
+        percentActuated = Mathf.Clamp01(1 - Vector3.Distance(transform.position, startPosition) / maxDistance);
     }
-
-
-	//float GetPercentActuated () {
-	//	float currentDistance = Vector3.Distance(MultiplyVectorAxisAbs(transform.localPosition, actuationDirection), MultiplyVectorAxisAbs(fullyEngagedButtonPosition, actuationDirection));
-	//	return Mathf.Clamp01(currentDistance / maxDistance);
-	//}
-
-	//Vector3 MultiplyVectorAxisAbs (Vector3 a, Vector3 b) {
-	//	return new Vector3 (a.x * Mathf.Abs(b.x), a.y * Mathf.Abs(b.y), a.z * Mathf.Abs(b.z));
-	//}
-
-	//float GetSingleAxisPosition (Vector3 position, Vector3 axisToGet) {
-	//Vector3 result = MultiplyVectorAxisAbs(position, axisToGet.normalized);
-	//if (result.x != 0) {
-	//	return result.x;
-	//} else if (result.y != 0) {
-	//	return result.y;
-	//} else if (result.z != 0) {
-	//	return result.z;
-	//} else {
-	//	return 0;
-	//}
-	//}
 }
