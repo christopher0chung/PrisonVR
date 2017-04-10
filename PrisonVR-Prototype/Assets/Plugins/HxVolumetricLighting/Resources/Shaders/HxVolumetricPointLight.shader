@@ -1,3 +1,5 @@
+// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
 // Upgrade NOTE: replaced '_World2Object' with 'unity_WorldToObject'
 
 
@@ -102,7 +104,7 @@ samplerCUBE PointCookieTexture;
 	{
 		v2f o;
 #if UNITY_SINGLE_PASS_STEREO
-		o.pos = mul(UNITY_MATRIX_MVP, v.vertex);
+		o.pos = UnityObjectToClipPos(v.vertex);
 		o.uv = ComputeScreenPos(o.pos);
 #ifdef FULL_ON
 		o.ray = mul(UNITY_MATRIX_MV, v.vertex).xyz * float3(1, 1, 1);
@@ -122,7 +124,7 @@ samplerCUBE PointCookieTexture;
 		v2f o;
 #if UNITY_SINGLE_PASS_STEREO
 
-		o.pos = mul(UNITY_MATRIX_MVP, v.vertex);
+		o.pos = UnityObjectToClipPos(v.vertex);
 		o.pos.z = min(_ProjectionParams.z, o.pos.z);
 		o.uv = ComputeScreenPos(o.pos);
 #ifdef FULL_ON

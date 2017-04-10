@@ -1,3 +1,5 @@
+// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
 Shader "Hidden/HxVolumetricApply" {
 
 	Properties
@@ -52,7 +54,7 @@ Shader "Hidden/HxVolumetricApply" {
 		v2f o = (v2f)0;
 		//o.pos = mul(UNITY_MATRIX_MVP, v.vertex);
 		//o.uv = v.vertex.xy;//v.texcoord;
-		o.pos = mul(UNITY_MATRIX_MVP, v.vertex);
+		o.pos = UnityObjectToClipPos(v.vertex);
 		o.uv = ComputeScreenPos(o.pos);
 
 
@@ -63,7 +65,7 @@ Shader "Hidden/HxVolumetricApply" {
 	v2ff vertFull(appdata_img v)
 	{
 		v2ff o = (v2ff)0;
-		o.pos = mul(UNITY_MATRIX_MVP, v.vertex);
+		o.pos = UnityObjectToClipPos(v.vertex);
 		o.uv = ComputeScreenPos(o.pos);
 
 

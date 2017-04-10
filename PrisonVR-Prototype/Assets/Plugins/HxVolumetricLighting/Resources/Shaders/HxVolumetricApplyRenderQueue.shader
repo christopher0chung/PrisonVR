@@ -1,3 +1,5 @@
+// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
 
 
 Shader "Hidden/HxVolumetricApplyRenderQueue"
@@ -36,7 +38,7 @@ Shader "Hidden/HxVolumetricApplyRenderQueue"
 	v2f vert(appdata v)
 	{
 		v2f o;
-		o.pos = mul(UNITY_MATRIX_MVP, v.vertex);
+		o.pos = UnityObjectToClipPos(v.vertex);
 		o.uv = ComputeScreenPos(o.pos);
 
 		return o;
