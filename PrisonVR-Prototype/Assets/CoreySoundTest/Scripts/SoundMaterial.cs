@@ -9,7 +9,9 @@ public class SoundMaterial : MonoBehaviour {
 	public soundMaterial thisMaterial;
 
 	float soundCooldown = 0.0f;
-	float cooldownTime = 0.5f;
+	float scrapingStartTime = 0.3f;
+	float scrapingTime = 0.0f;
+	float cooldownTime = 0.25f;
 
 	void Start () {
 
@@ -25,24 +27,31 @@ public class SoundMaterial : MonoBehaviour {
 		if (other.gameObject.name == "SoundCollider" && soundCooldown > cooldownTime) {
 			switch (thisMaterial) {
 				case soundMaterial.Steel:
-					PrisonAudioDirector.instance.Play3DSFX (PrisonAudioDirector.instance.steelImpact, other.gameObject.transform.position, 0.2f);
+					other.GetComponent<AudioSource> ().clip = PrisonAudioDirector.instance.steelImpact;
+					other.GetComponent<AudioSource> ().Play ();
+					//PrisonAudioDirector.instance.Play3DSFX (PrisonAudioDirector.instance.steelImpact, other.gameObject.transform.position, 0.2f);
 					break;
 				case soundMaterial.SteelDoor:
-					PrisonAudioDirector.instance.Play3DSFX (PrisonAudioDirector.instance.steelDoorImpact, other.gameObject.transform.position, 0.2f);
+					other.GetComponent<AudioSource> ().clip = PrisonAudioDirector.instance.steelDoorImpact;
+					other.GetComponent<AudioSource> ().Play ();
 					break;
 				case soundMaterial.Water:
-					PrisonAudioDirector.instance.Play3DSFX (PrisonAudioDirector.instance.waterImpact, other.gameObject.transform.position, 0.2f);
+					other.GetComponent<AudioSource> ().clip = PrisonAudioDirector.instance.waterImpact;
+					other.GetComponent<AudioSource> ().Play ();
 					break;
 				case soundMaterial.Mattress:
-					PrisonAudioDirector.instance.Play3DSFX (PrisonAudioDirector.instance.mattressImpact, other.gameObject.transform.position, 0.2f);
+					other.GetComponent<AudioSource> ().clip = PrisonAudioDirector.instance.mattressImpact;
+					other.GetComponent<AudioSource> ().Play ();
 					break;
 				case soundMaterial.Plexi:
 					int index = Random.Range (0, PrisonAudioDirector.instance.plexiImpact.Length);
-					PrisonAudioDirector.instance.Play3DSFX (PrisonAudioDirector.instance.plexiImpact[index], other.gameObject.transform.position, 0.2f);
+					other.GetComponent<AudioSource> ().clip = PrisonAudioDirector.instance.plexiImpact[index];
+					other.GetComponent<AudioSource> ().Play ();
 					break;
 				default: 
 					index = Random.Range (0, PrisonAudioDirector.instance.concreteImpact.Length);
-					PrisonAudioDirector.instance.Play3DSFX (PrisonAudioDirector.instance.concreteImpact[index], other.gameObject.transform.position, 0.2f);
+					other.GetComponent<AudioSource> ().clip = PrisonAudioDirector.instance.concreteImpact[index];
+					other.GetComponent<AudioSource> ().Play ();
 					break;
 
 			}
@@ -50,6 +59,17 @@ public class SoundMaterial : MonoBehaviour {
 			soundCooldown = 0f;
 
 		}
+	}
+
+	void OnTriggerStay ( Collider other) {
+		scrapingTime += Time.fixedDeltaTime;
+		if (scrapingTime >= scrapingStartTime) {
+
+		}
+	}
+
+	void OnTriggerExit ( Collider other) {
+		scrapingTime = 0;
 	}
 
 
