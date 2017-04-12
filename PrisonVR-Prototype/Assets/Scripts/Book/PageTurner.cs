@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PageTurner : MonoBehaviour {
 
-	BookText bookText;
+	public BookText bookText;
 
 	Vector3 hand1StartPos;
 	Vector3 hand2StartPos;
