@@ -9,19 +9,24 @@ ModelImporter:
     100002: Not_A_Prison_Cell1:Screen
     100004: Not_A_Prison_Cell1:ScreenFrame
     100006: //RootNode
+    100008: ScreenFrame
     400000: Not_A_Prison_Cell1:Nails
     400002: Not_A_Prison_Cell1:Screen
     400004: Not_A_Prison_Cell1:ScreenFrame
     400006: //RootNode
+    400008: ScreenFrame
     2300000: Not_A_Prison_Cell1:Nails
     2300002: Not_A_Prison_Cell1:Screen
     2300004: Not_A_Prison_Cell1:ScreenFrame
+    2300006: ScreenFrame
     3300000: Not_A_Prison_Cell1:Nails
     3300002: Not_A_Prison_Cell1:Screen
     3300004: Not_A_Prison_Cell1:ScreenFrame
+    3300006: ScreenFrame
     4300000: Not_A_Prison_Cell1:Screen
     4300002: Not_A_Prison_Cell1:ScreenFrame
     4300004: Not_A_Prison_Cell1:Nails
+    4300006: ScreenFrame
   materials:
     importMaterials: 1
     materialName: 0
