@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class FaucetSound : MonoBehaviour {
+public class ToiletSound : MonoBehaviour {
 
 	[SerializeField] ButtonPressPercent myBPP; 
 	[SerializeField] AudioClip onSound, offSound, onLoop;
@@ -22,11 +22,11 @@ public class FaucetSound : MonoBehaviour {
 				_on = value;
 				if (_on)
 				{
-					StartSink ();
+					StartFlush ();
 				}
 				else
 				{
-					StopSink ();
+					StopFlush ();
 				}
 			}
 		}
@@ -34,19 +34,22 @@ public class FaucetSound : MonoBehaviour {
 
 	AudioSource[] myAudioSources;
 
-	public Advertisement adScript;
+	[SerializeField] Advertisement adScript;
 
 
 	// Use this for initialization
 	void Start () {
 
+		adScript = GameObject.Find ("TempAdScreen").GetComponent<Advertisement> ();
+
+		myBPP = GameObject.Find ("Toilet_Sink(ReqCollOnHands)/toilet_button").GetComponent<ButtonPressPercent> ();
 		myAudioSources = GetComponents<AudioSource> ();
 		myAudioSources [0].clip = onSound;
 		myAudioSources [1].clip = onLoop;
 		myAudioSources [2].clip = offSound;
-		
+
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
 		if (myBPP.percentActuated >= .05f)
@@ -57,16 +60,16 @@ public class FaucetSound : MonoBehaviour {
 		{
 			on = false;
 		}
-		
+
 	}
 
-	void StartSink() {
+	void StartFlush() {
 		myAudioSources [0].Play ();
 		myAudioSources [1].PlayDelayed (0.2f);
 		myAudioSources [1].loop = true;
 		adScript.PlayAd ();
 	}
-	void StopSink() {
+	void StopFlush() {
 		myAudioSources [2].Play ();
 		myAudioSources [1].Stop ();
 	}
