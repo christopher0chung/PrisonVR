@@ -32,15 +32,17 @@ public class FaucetSound : MonoBehaviour {
 		}
 	}
 
-	AudioSource[] myAudioSources;
+	[SerializeField] AudioSource[] myAudioSources;
 
-	public Advertisement adScript;
+	[SerializeField] Advertisement adScript;
 
 
 	// Use this for initialization
 	void Start () {
 
-		myBPP = GameObject.Find ("Toilet_Sink/Faucet/faucet_button").GetComponent<ButtonPressPercent> ();
+		adScript = GameObject.Find ("TempAdScreen").GetComponent<Advertisement> ();
+
+		myBPP = GameObject.Find ("Toilet_Sink(ReqCollOnHands)/Faucet/faucet_button").GetComponent<ButtonPressPercent> ();
 		myAudioSources = GetComponents<AudioSource> ();
 		myAudioSources [0].clip = onSound;
 		myAudioSources [1].clip = onLoop;
