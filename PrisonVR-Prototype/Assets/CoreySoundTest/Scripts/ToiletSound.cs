@@ -42,7 +42,7 @@ public class ToiletSound : MonoBehaviour {
 
 		adScript = GameObject.Find ("TempAdScreen").GetComponent<Advertisement> ();
 
-		myBPP = GameObject.Find ("Toilet_Sink(ReqCollOnHands)/toilet_button").GetComponent<ButtonPressPercent> ();
+		myBPP = GameObject.FindGameObjectWithTag ("ToiletButton").GetComponent<ButtonPressPercent> ();
 		myAudioSources = GetComponents<AudioSource> ();
 		myAudioSources [0].clip = onSound;
 		myAudioSources [1].clip = onLoop;
