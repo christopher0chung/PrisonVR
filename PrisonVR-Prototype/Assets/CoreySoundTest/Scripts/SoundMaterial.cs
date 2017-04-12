@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum soundMaterial {Concrete = 1, Steel = 2, SteelDoor = 3, Water = 4, Mattress = 5};
+public enum soundMaterial {Concrete = 1, Steel = 2, SteelDoor = 3, Water = 4, Mattress = 5, Plexi = 6};
 
 public class SoundMaterial : MonoBehaviour {
 
@@ -36,8 +36,12 @@ public class SoundMaterial : MonoBehaviour {
 				case soundMaterial.Mattress:
 					PrisonAudioDirector.instance.Play3DSFX (PrisonAudioDirector.instance.mattressImpact, other.gameObject.transform.position, 0.2f);
 					break;
+				case soundMaterial.Plexi:
+					int index = Random.Range (0, PrisonAudioDirector.instance.plexiImpact.Length);
+					PrisonAudioDirector.instance.Play3DSFX (PrisonAudioDirector.instance.plexiImpact[index], other.gameObject.transform.position, 0.2f);
+					break;
 				default: 
-					int index = Random.Range (0, PrisonAudioDirector.instance.concreteImpact.Length);
+					index = Random.Range (0, PrisonAudioDirector.instance.concreteImpact.Length);
 					PrisonAudioDirector.instance.Play3DSFX (PrisonAudioDirector.instance.concreteImpact[index], other.gameObject.transform.position, 0.2f);
 					break;
 
