@@ -66,7 +66,7 @@ public class PlayStoreManager : MonoBehaviour {
 			Debug.Log(timeScaleStore);
 			Time.timeScale = 0.0f;
 			iOSWebviewGameObject = (GameObject)Instantiate(Resources.Load("VadrWebview"));
-			GvrViewer.AddStereoControllerToCameras();
+			//GvrViewer.AddStereoControllerToCameras();
 			Debug.Log ("Webview Debug: THe name of webview created is: " + iOSWebviewGameObject.transform.name);
 			iOSWebviewGameObject.transform.position = new Vector3(0.0f, 0.0f, 0.0f);
 			UseVadrWebview store = iOSWebviewGameObject.GetComponent<UseVadrWebview>();
@@ -96,7 +96,7 @@ public class PlayStoreManager : MonoBehaviour {
             Debug.Log(timeScaleStore);
             Time.timeScale = 0.0f;
             pentagonStore = (GameObject)Instantiate(Resources.Load("PentagonStore"));
-            GvrViewer.AddStereoControllerToCameras();
+           // GvrViewer.AddStereoControllerToCameras();
             pentagonStore.transform.position = new Vector3(0.0f, 0.0f, 0.0f);
             PlayStore store = pentagonStore.GetComponent<PlayStore>();
             if (store != null)
@@ -117,7 +117,7 @@ public class PlayStoreManager : MonoBehaviour {
 			UnityEngine.Object.Destroy(iOSWebviewGameObject);
 			iOSWebviewGameObject = null;
 			pentagonStore = (GameObject)Instantiate(Resources.Load("PentagonStore"));
-			GvrViewer.AddStereoControllerToCameras();
+			//GvrViewer.AddStereoControllerToCameras();
 			pentagonStore.transform.position = new Vector3(0.0f, 0.0f, 0.0f);
 			PlayStore store = pentagonStore.GetComponent<PlayStore>();
 			if (store != null)
@@ -193,7 +193,7 @@ public class PlayStoreManager : MonoBehaviour {
         timeScaleInterstitial = Time.timeScale;
         Time.timeScale = 0.0f;
         interstitialVideo = (GameObject)Instantiate(Resources.Load("InterstitialVideo"));
-        GvrViewer.AddStereoControllerToCameras();
+        //GvrViewer.AddStereoControllerToCameras();
         interstitialVideo.transform.position = new Vector3(0.0f, 0.0f, 0.0f);
         //VadrVideoCtrl video = interstitialVideo.transform.Find("VideoAd").GetComponent<VadrVideoCtrl>();
         //video.init();
