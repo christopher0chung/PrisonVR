@@ -9,6 +9,7 @@ public class BookText : MonoBehaviour {
 	public string bookTextPath;
 	public int charsPerPage = 2000;
 
+	public Text[] pagesText;
 	Text pageText;
 
 	string textContents;
@@ -22,11 +23,11 @@ public class BookText : MonoBehaviour {
 			textContents = FileIOUtil.ReadStringFromFile(bookTextPath);
 		}
 		else {
-			Debug.Log("file path is invalid. nothing done");
+			Debug.Log("File path is invalid. Nothing done.");
 		}
 
-		maxPageIndex = Mathf.CeilToInt(textContents.ToCharArray().Length / charsPerPage);
-		pageText.text = GetPage(currentPageIndex);
+		maxPageIndex = Mathf.CeilToInt(textContents.ToCharArray().Length / charsPerPage) - pagesText.Length + 1;
+		SetPages();
 	}
 
 	void Update () {
@@ -41,12 +42,18 @@ public class BookText : MonoBehaviour {
 
 	public void TurnPageForward () {
 		currentPageIndex = Mathf.Clamp(currentPageIndex + 1, 0, maxPageIndex);
-		pageText.text = GetPage(currentPageIndex);
+		SetPages();
 	}
 
 	public void TurnPageBack () {
 		currentPageIndex = Mathf.Clamp(currentPageIndex - 1, 0, maxPageIndex);
-		pageText.text = GetPage(currentPageIndex);
+		SetPages();
+	}
+
+	public void SetPages () {
+		for(int i = 0; i < pagesText.Length; i++) {
+			pagesText[i].text = GetPage(currentPageIndex + i);
+		}
 	}
 
 	string GetPage (int page) {
