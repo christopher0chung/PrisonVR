@@ -40,7 +40,7 @@ public class FaucetSound : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
-		myBPP = GameObject.Find ("faucet_button").GetComponent<ButtonPressPercent> ();
+		myBPP = GameObject.Find ("Toilet_Sink/Faucet/faucet_button").GetComponent<ButtonPressPercent> ();
 		myAudioSources = GetComponents<AudioSource> ();
 		myAudioSources [0].clip = onSound;
 		myAudioSources [1].clip = onLoop;
