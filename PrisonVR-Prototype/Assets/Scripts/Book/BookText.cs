@@ -8,7 +8,7 @@ public class BookText : MonoBehaviour {
 
 	public string bookTextPath;
 	public int charsPerPage = 2000;
-	public Object bookTextReference;
+	public TextAsset bookTextReference;
 
 	public Text[] pagesText;
 	Text pageText;
