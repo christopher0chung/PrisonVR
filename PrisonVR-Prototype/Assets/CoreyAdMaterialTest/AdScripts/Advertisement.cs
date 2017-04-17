@@ -8,15 +8,14 @@ public class Advertisement: MonoBehaviour {
 	MovieTexture currentMovie;
 
 	AudioSource movieSource;
-
 	float playTime;
 
 	int index;
 
 	void Start() {
 		
-		GetComponent<Renderer>().material.mainTexture = movieTextures[0];
-		movieSource = GetComponent<AudioSource> ();
+		GetComponent<Renderer>().material.SetTexture("_emissiveTexture", movieTextures[0]);
+		movieSource = GetComponent<AudioSource>();
 		movieSource.clip = movieAudio[0];
 		currentMovie = movieTextures [0];
 	
@@ -40,7 +39,7 @@ public class Advertisement: MonoBehaviour {
 
 		movieSource.Stop();
 		currentMovie.Stop();
-		GetComponent<Renderer>().material.mainTexture = movieTextures[(index + 1) % movieTextures.Length];
+		GetComponent<Renderer>().material.SetTexture("_emissiveTexture", movieTextures[(index + 1) % movieTextures.Length]);
 		currentMovie = movieTextures [(index + 1) % movieTextures.Length];
 		movieSource.clip = movieAudio[(index+1) % movieAudio.Length];
 		movieSource.Play();
