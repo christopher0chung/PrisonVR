@@ -45,10 +45,11 @@ public class ButtonPressPercent : MonoBehaviour
     {
         if (!inContact)
             MoveTowardsMax();
+        else
+            transform.localPosition = new Vector3(startLocal.x, Mathf.Clamp(transform.localPosition.y, startLocal.y, startLocal.y + maxDistance), startLocal.z);
 
         ContactTimer();
         ThrowPercent();
-        transform.localPosition = new Vector3(startLocal.x, Mathf.Clamp(transform.localPosition.y, startLocal.y, startLocal.y + maxDistance), startLocal.z);
     }
 
     void OnCollisionStay(Collision other)
