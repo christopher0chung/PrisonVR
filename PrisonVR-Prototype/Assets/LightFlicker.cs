@@ -19,10 +19,11 @@ public class LightFlicker : MonoBehaviour {
         if (screenOn)
         {
             timer += Time.deltaTime;
+            
             if (timer >= .1f)
             {
                 timer -= .1f;
-                mL.intensity = Random.Range(.5f, 1.1f);
+                mL.intensity = Random.Range(.5f, 0.7f);
             }
         }
         else
