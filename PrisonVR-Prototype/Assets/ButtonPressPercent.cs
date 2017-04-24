@@ -46,6 +46,7 @@ public class ButtonPressPercent : MonoBehaviour
 
         ContactTimer();
         ThrowPercent();
+        transform.position = Vector3.ClampMagnitude((transform.position + (startPosition + transform.up * maxDistance)) / 2, maxDistance / 2);
     }
 
     void OnCollisionStay(Collision other)
