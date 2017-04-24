@@ -65,6 +65,8 @@ public class BookOpenCloseController : MonoBehaviour {
     public UnityEvent OnOpen;
     public UnityEvent OnClose;
 
+	public UnityEvent OnDrop;
+
 	// Use this for initialization
 	void Start () {
 		//myCam = GameObject.Find("VRCamera").transform;
@@ -111,4 +113,11 @@ public class BookOpenCloseController : MonoBehaviour {
         passedValue = openCloseFloat;
         myBC.bookCloseOpen = myAC.Evaluate(passedValue);
     }
+
+	void OnCollisionEnter (Collision collision) {
+
+		OnDrop.Invoke ();
+
+	}
+
 }
