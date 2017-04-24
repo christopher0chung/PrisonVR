@@ -28,7 +28,7 @@ public class SoundCollider : MonoBehaviour {
 	public void PassNewVolume (float v, float t) {
 
 		vol = Mathf.Lerp(vol, v, t);
-		smoothing = t;
+		smoothing = t*2f;
 
 	}
 
