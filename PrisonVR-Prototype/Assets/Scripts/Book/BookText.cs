@@ -6,7 +6,7 @@ using System.IO;
 
 public class BookText : MonoBehaviour {
 
-	public string bookTextPath;
+	//public string bookTextPath;
 	public int charsPerPage = 2000;
 	public TextAsset bookTextReference;
 
@@ -19,14 +19,15 @@ public class BookText : MonoBehaviour {
 
 	void Start () {
 		pageText = GetComponent<Text>();
-		if (File.Exists(bookTextPath))
-		{
-			textContents = FileIOUtil.ReadStringFromFile(bookTextPath);
-		}
-		else {
-			Debug.Log("File path is invalid. Nothing done.");
-		}
+		// if (File.Exists(bookTextPath))
+		// {
+		// 	textContents = FileIOUtil.ReadStringFromFile(bookTextPath);
+		// }
+		// else {
+		// 	Debug.Log("File path is invalid. Nothing done.");
+		// }
 
+		textContents = bookTextReference.text;
 		maxPageIndex = Mathf.CeilToInt(textContents.ToCharArray().Length / charsPerPage) - pagesText.Length + 1;
 		SetPages();
 	}
