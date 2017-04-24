@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class BookSounds : MonoBehaviour {
 
-	CS_PlaySFX sfxPlayer;
-
 	[SerializeField] AudioClip[] PageSounds;
 	[SerializeField] AudioClip[] BindingSounds;
 	[SerializeField] AudioClip[] ImpactSounds;
@@ -19,7 +17,7 @@ public class BookSounds : MonoBehaviour {
 
 
 	void Start () {
-		sfxPlayer = gameObject.GetComponent<CS_PlaySFX> ();
+		
 
 		GameObject bookObject = GameObject.Find ("Book2");
 
@@ -31,17 +29,23 @@ public class BookSounds : MonoBehaviour {
 
 	public void OpenBook() {
 		float jitter = pitchJitter * Random.value - 0.5f * pitchJitter; 
-		sfxPlayer.PlaySFX(BindingSounds[Random.Range(0,BindingSounds.Length)], jitter, transform.position);
+		PrisonAudioDirector.instance.Play3DSFX(BindingSounds[Random.Range(0,BindingSounds.Length)], transform.position, jitter);
 	}
 
 	public void CloseBook() {
 		float jitter = pitchJitter * Random.value - 0.5f * pitchJitter; 
-		sfxPlayer.PlaySFX (closeBookSound, jitter, transform.position);
+		PrisonAudioDirector.instance.Play3DSFX(closeBookSound, transform.position, jitter);
 	}
 
 	public void TurnPage() {
 		float jitter = pitchJitter * Random.value - 0.5f * pitchJitter;
-		sfxPlayer.PlaySFX(PageSounds[Random.Range(0,PageSounds.Length)], jitter, transform.position);
+		PrisonAudioDirector.instance.Play3DSFX(PageSounds[Random.Range(0,PageSounds.Length)], transform.position, jitter);
+	}
+
+	public void BookDrop () {
+		float jitter = pitchJitter * Random.value - 0.5f * pitchJitter; 
+
+		PrisonAudioDirector.instance.Play3DSFX (ImpactSounds [0], transform.position, jitter);
 	}
 
 }
