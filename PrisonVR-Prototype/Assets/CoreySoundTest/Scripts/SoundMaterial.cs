@@ -30,6 +30,7 @@ public class SoundMaterial : MonoBehaviour {
 		if (other.gameObject.name == "SoundCollider") {
 
 			colliderPrevPos = other.transform.position;
+			other.GetComponent<SoundCollider> ().ResetVolume ();
 
 			switch (thisMaterial) {
 			case soundMaterial.Steel:
@@ -62,8 +63,9 @@ public class SoundMaterial : MonoBehaviour {
 			default: 
 				index = Random.Range (0, PrisonAudioDirector.instance.concreteImpact.Length);
 				//other.GetComponent<AudioSource> ().clip = PrisonAudioDirector.instance.concreteImpact[index];
-				nextClip = PrisonAudioDirector.instance.concreteImpact[index];
-				other.GetComponent<AudioSource> ().PlayOneShot  (nextClip);
+				nextClip = PrisonAudioDirector.instance.concreteImpact [index];
+				other.GetComponent<AudioSource> ().PlayOneShot (nextClip);
+				other.GetComponent<SoundCollider> ().PassNewVolume (0f);
 				break;
 
 			}
@@ -84,9 +86,8 @@ public class SoundMaterial : MonoBehaviour {
 			colliderPrevPos = colliderPos;
 
 			AudioSource otherSource = other.gameObject.GetComponent<AudioSource> ();
-
-			otherSource.volume = 0.3f;
-
+			other.GetComponent<SoundCollider> ().PassNewVolume (colSpeed);
+			//otherSource.volume = 0.3f;
 			otherSource.loop = true;
 
 			scrapingTime += Time.fixedDeltaTime;
@@ -98,32 +99,32 @@ public class SoundMaterial : MonoBehaviour {
 
 					nextClip = PrisonAudioDirector.instance.steelImpact;
 					otherSource.clip = nextClip;
-					otherSource.Play ();
-				
+					//otherSource.Play ();
+			
 					break;
 				case soundMaterial.SteelDoor:
 					nextClip = PrisonAudioDirector.instance.steelImpact;
 					otherSource.clip = nextClip;
-					otherSource.Play ();
+					//otherSource.Play ();
 					break;
 				case soundMaterial.Water:
 
 					nextClip = PrisonAudioDirector.instance.waterImpact;
 					otherSource.clip = nextClip;
-					otherSource.Play ();
+					//otherSource.Play ();
 					break;
 				case soundMaterial.Mattress:
 			
 					nextClip = PrisonAudioDirector.instance.steelDoorImpact;
 					otherSource.clip = nextClip;
-					otherSource.Play ();
+					//otherSource.Play ();
 					break;
 				case soundMaterial.Plexi:
 					int index = Random.Range (0, PrisonAudioDirector.instance.plexiImpact.Length);
 			
 					nextClip = PrisonAudioDirector.instance.plexiImpact [index];
 					otherSource.clip = nextClip;	
-					otherSource.Play ();
+					//otherSource.Play ();
 					break;
 				default: 
 
@@ -152,6 +153,7 @@ public class SoundMaterial : MonoBehaviour {
 			otherSource.Stop ();
 			otherSource.volume = 1.0f;
 		}
+
 		scrapingTime = 0;
 
 
