@@ -11,6 +11,7 @@ public class ButtonPressPercent : MonoBehaviour
     //public Vector3 actuationDirection;
     //public Vector3 fullyEngagedButtonPosition;
     Vector3 startPosition;
+    Vector3 startLocal;
     [SerializeField]
     float maxDistance;
 
@@ -37,6 +38,7 @@ public class ButtonPressPercent : MonoBehaviour
     void Start()
     {
         startPosition = transform.position;
+        startLocal = transform.localPosition;
     }
 
     void Update()
@@ -46,6 +48,7 @@ public class ButtonPressPercent : MonoBehaviour
 
         ContactTimer();
         ThrowPercent();
+        transform.localPosition = new Vector3(startLocal.x, Mathf.Clamp(transform.localPosition.y, startLocal.y, startLocal.y + maxDistance), startLocal.z);
     }
 
     void OnCollisionStay(Collision other)
