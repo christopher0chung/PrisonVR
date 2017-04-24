@@ -8,6 +8,8 @@ public class SoundCollider : MonoBehaviour {
 
 	float vol;
 
+	float smoothing = 0.1f;
+
 	// Use this for initialization
 	void Start () {
 
@@ -19,13 +21,14 @@ public class SoundCollider : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		mySource.volume = Mathf.Lerp(mySource.volume, vol, .1f);
+		mySource.volume = Mathf.Lerp(mySource.volume, vol, smoothing);
 
 	}
 
-	public void PassNewVolume (float v) {
+	public void PassNewVolume (float v, float t) {
 
-		vol = Mathf.Lerp(vol, v, .1f);
+		vol = Mathf.Lerp(vol, v, t);
+		smoothing = t;
 
 	}
 
@@ -36,10 +39,7 @@ public class SoundCollider : MonoBehaviour {
 
 	}
 
-	public void SetZeroVolume() {
-		vol = 0f;
-		mySource.volume = 0f;
-	}
+
 
 
 }

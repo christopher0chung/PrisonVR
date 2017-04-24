@@ -65,7 +65,7 @@ public class SoundMaterial : MonoBehaviour {
 				//other.GetComponent<AudioSource> ().clip = PrisonAudioDirector.instance.concreteImpact[index];
 				nextClip = PrisonAudioDirector.instance.concreteImpact [index];
 				other.GetComponent<AudioSource> ().PlayOneShot (nextClip);
-				other.GetComponent<SoundCollider> ().PassNewVolume (0f);
+				other.GetComponent<SoundCollider> ().PassNewVolume (0f, 0.5f);
 				break;
 
 			}
@@ -80,14 +80,14 @@ public class SoundMaterial : MonoBehaviour {
 
 			colliderPos = other.transform.position;
 
-			float colSpeed = (colliderPos - colliderPrevPos).magnitude;
+			float colSpeed = (colliderPos - colliderPrevPos).sqrMagnitude;
 			//Debug.Log (colSpeed);
 
 			colliderPrevPos = colliderPos;
 
 			AudioSource otherSource = other.gameObject.GetComponent<AudioSource> ();
-			other.GetComponent<SoundCollider> ().PassNewVolume (colSpeed);
-			//otherSource.volume = 0.3f;
+			other.GetComponent<SoundCollider> ().PassNewVolume (Mathf.Clamp(colSpeed * 100f, 0f, 1f), 0.4f);
+
 			otherSource.loop = true;
 
 			scrapingTime += Time.fixedDeltaTime;
@@ -151,7 +151,7 @@ public class SoundMaterial : MonoBehaviour {
 
 			otherSource.loop = false;
 			otherSource.Stop ();
-			otherSource.volume = 1.0f;
+			//other.GetComponent<SoundCollider>().PassNewVolume(0f,0.6f);
 		}
 
 		scrapingTime = 0;
