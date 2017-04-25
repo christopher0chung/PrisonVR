@@ -8,6 +8,7 @@ public class LightFlicker : MonoBehaviour {
 
     Light mL;
     float timer;
+    float targetIntensity = 0;
 	// Use this for initialization
 	void Start () {
         mL = GetComponent<Light>();
@@ -19,16 +20,19 @@ public class LightFlicker : MonoBehaviour {
         if (screenOn)
         {
             timer += Time.deltaTime;
-            
-            if (timer >= .1f)
+
+            if (timer >= .15f)
             {
-                timer -= .1f;
-                mL.intensity = Random.Range(.5f, 0.7f);
+                timer = 0;
+                targetIntensity = Random.Range(.5f, 1f);
+
             }
         }
         else
         {
-            mL.intensity = 0;
+            targetIntensity = 0;
         }
+
+        mL.intensity += (targetIntensity - mL.intensity) * 0.15f;
 	}
 }
