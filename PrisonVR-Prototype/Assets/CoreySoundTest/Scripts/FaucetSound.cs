@@ -8,7 +8,7 @@ public class FaucetSound : MonoBehaviour {
 	[SerializeField] ButtonPressPercent myBPP; 
 	[SerializeField] AudioClip onSound, offSound, onLoop;
 
-	double attackDSPTime;
+	double attackDSPTime, sustainStartDSPTime, releaseDSPTime;
 	double prevSustainSamples;
 
 	int loopCount;
@@ -53,6 +53,8 @@ public class FaucetSound : MonoBehaviour {
 		myAudioSources [0].clip = onSound;
 		myAudioSources [1].clip = onLoop;
 		myAudioSources [2].clip = offSound;
+
+		loopCount = 1;
 		
 	}
 	
@@ -76,15 +78,21 @@ public class FaucetSound : MonoBehaviour {
 	void StartSink() {
 
 		attackDSPTime = AudioSettings.dspTime;
+		sustainStartDSPTime = attackDSPTime + onSound.length;
 
 		myAudioSources [0].Play ();
-		myAudioSources [1].PlayScheduled (onSound.length + attackDSPTime);
+		myAudioSources [1].PlayScheduled (sustainStartDSPTime);
 		myAudioSources [1].loop = true;
 		adScript.PlayAd ();
 	}
 	void StopSink() {
-		myAudioSources [2].PlayScheduled ();
-		myAudioSources [1].SetScheduledEndTime ();
+
+		releaseDSPTime = attackDSPTime + onSound.length + (onLoop.length * loopCount);
+
+		myAudioSources [2].PlayScheduled (releaseDSPTime);
+		myAudioSources [1].SetScheduledEndTime (releaseDSPTime);
+
+		loopCount = 1;
 	}
 
 	void CountSustainLoop() {

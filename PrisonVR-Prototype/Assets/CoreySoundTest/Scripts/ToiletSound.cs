@@ -73,4 +73,8 @@ public class ToiletSound : MonoBehaviour {
 		myAudioSources [2].Play ();
 		myAudioSources [1].Stop ();
 	}
+
+	void CountSustainLoop() {
+
+	}
 }
