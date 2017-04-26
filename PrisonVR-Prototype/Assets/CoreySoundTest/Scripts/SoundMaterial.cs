@@ -159,6 +159,18 @@ public class SoundMaterial : MonoBehaviour {
 
 	}
 
+	void StartSound() {
+
+	}
+
+	void SustainSound() {
+
+	}
+
+	void StopSound() {
+
+	}
+
 
 
 }
