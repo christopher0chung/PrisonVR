@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class SoundCollider : MonoBehaviour {
 
-	AudioSource mySource;
+	AudioSource[] mySources;
+	public AudioSource attackSource, sustainSource, releaseSource;
 
 	float vol;
 
@@ -13,7 +14,10 @@ public class SoundCollider : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
-		mySource = GetComponent<AudioSource> ();
+		mySources = GetComponents<AudioSource> ();
+		attackSource = mySources [0];
+		sustainSource = mySources [1];
+		releaseSource = mySources [2];
 		vol = 1.0f;
 
 	}
@@ -21,7 +25,7 @@ public class SoundCollider : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		mySource.volume = Mathf.Lerp(mySource.volume, vol, smoothing);
+		sustainSource.volume = Mathf.Lerp(sustainSource.volume, vol, smoothing);
 
 	}
 
@@ -35,7 +39,7 @@ public class SoundCollider : MonoBehaviour {
 	public void ResetVolume() {
 		
 		vol = 1.0f;
-		mySource.volume = 1.0f;
+		sustainSource.volume = 1.0f;
 
 	}
 
