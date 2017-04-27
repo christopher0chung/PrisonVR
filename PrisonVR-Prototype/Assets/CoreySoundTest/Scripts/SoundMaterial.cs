@@ -54,7 +54,7 @@ public class SoundMaterial : MonoBehaviour {
 				break;
 			case soundMaterial.Mattress:
 				//other.GetComponent<AudioSource> ().clip = PrisonAudioDirector.instance.mattressImpact;
-				nextClip = PrisonAudioDirector.instance.steelDoorImpact;
+				nextClip = PrisonAudioDirector.instance.mattressImpact;
 				s_coll.attackSource.PlayOneShot  (nextClip);
 				break;
 			case soundMaterial.Plexi:
