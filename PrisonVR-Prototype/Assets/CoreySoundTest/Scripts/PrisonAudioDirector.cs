@@ -19,6 +19,10 @@ public class PrisonAudioDirector : MonoBehaviour {
 	public AudioClip steelImpact, steelDoorImpact, mattressImpact, waterImpact;
 
 	public AudioClip concreteScrape;
+	public AudioClip plexiScrape;
+	public AudioClip metalScrape;
+	public AudioClip mattressPress, mattressRelease;
+
 
 	[SerializeField] GameObject myPrefabSFX;
 
