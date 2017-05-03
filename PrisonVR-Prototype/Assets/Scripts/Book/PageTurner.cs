@@ -13,15 +13,8 @@ public class PageTurner : MonoBehaviour {
 	Vector3 turnDirection = Vector3.right;
 
 	bool hasTurnedPage = false;
-	bool isTurningPage = false;
+	bool isTurning = false;
 
-	void Update () {
-		if (isTurningPage) {
-
-		}
-
-		isTurningPage = false;
-	}
 
 	void HandHoverUpdate ( Hand hand ) {
 		// this applies to either Vive controller, "Hand" can be abstracted as anything
@@ -32,15 +25,15 @@ public class PageTurner : MonoBehaviour {
 		// }
 		turnDirection = transform.right;
 		if (hand.AttachedObjects.Count == 0) {
-			if (!isTurningPage) {
+			if (!isTurning) {
 				startPos = hand.transform.position;
 				hasTurnedPage = false;
 			}
 
 			if (hand.GetStandardInteractionButton()) {
-				isTurningPage = true;
+				isTurning = true;
 				if (!hasTurnedPage) {
-					if (isTurningPage(startPos, hand.transform.position)) {
+					if (IsTurningPage(startPos, hand.transform.position)) {
 						if (IsTurningForward(startPos, hand.transform.position)) {
 							bookText.TurnPageForward();
 						}
