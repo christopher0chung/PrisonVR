@@ -95,7 +95,7 @@ public class SoundMaterial : MonoBehaviour {
 			s_coll.PassNewVolume (Mathf.Clamp(colSpeed * 100f, 0f, 1f), 0.4f);
 
 			if (thisMaterial == soundMaterial.Mattress) {
-				s_coll.PassNewVolume (1.0f);
+				s_coll.PassNewVolume (1.0f, 0.4f);
 				s_coll.sustainSource.loop = false;
 			} else
 				s_coll.sustainSource.loop = true;
