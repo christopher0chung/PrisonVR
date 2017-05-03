@@ -12,7 +12,7 @@ public class Advertisement: MonoBehaviour {
 
 	int index;
 
-	void Start() {
+	void Awake() {
 		
 		GetComponent<Renderer>().material.SetTexture("_emissiveTexture", movieTextures[0]);
 		movieSource = GetComponent<AudioSource>();
@@ -36,9 +36,12 @@ public class Advertisement: MonoBehaviour {
 		//Debug.Log ("Play Ad");
 
 		//this code is annoying; movie textures are apparently really finnicky about starting/stopping
-
-		movieSource.Stop();
-		currentMovie.Stop();
+		if (movieSource) {
+			movieSource.Stop ();
+		}
+		if (currentMovie) {
+			currentMovie.Stop ();
+		}
 		GetComponent<Renderer>().material.SetTexture("_emissiveTexture", movieTextures[(index + 1) % movieTextures.Length]);
 		currentMovie = movieTextures [(index + 1) % movieTextures.Length];
 		movieSource.clip = movieAudio[(index+1) % movieAudio.Length];

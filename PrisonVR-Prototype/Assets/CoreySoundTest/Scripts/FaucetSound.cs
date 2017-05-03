@@ -8,6 +8,11 @@ public class FaucetSound : MonoBehaviour {
 	[SerializeField] ButtonPressPercent myBPP; 
 	[SerializeField] AudioClip onSound, offSound, onLoop;
 
+	double attackDSPTime, sustainStartDSPTime, releaseDSPTime;
+	double prevSustainSamples;
+
+	int loopCount;
+
 	private bool _on;
 	private bool on
 	{
@@ -31,14 +36,15 @@ public class FaucetSound : MonoBehaviour {
 			}
 		}
 	}
-
-	[SerializeField] AudioSource[] myAudioSources;
+	AudioSource[] myAudioSources;
 
 	[SerializeField] Advertisement adScript;
 
 
 	// Use this for initialization
 	void Start () {
+
+		//startDSPTime = AudioSettings.dspTime;
 
 		adScript = GameObject.Find ("TempAdScreen").GetComponent<Advertisement> ();
 
@@ -47,6 +53,8 @@ public class FaucetSound : MonoBehaviour {
 		myAudioSources [0].clip = onSound;
 		myAudioSources [1].clip = onLoop;
 		myAudioSources [2].clip = offSound;
+
+		loopCount = 1;
 		
 	}
 	
@@ -60,17 +68,40 @@ public class FaucetSound : MonoBehaviour {
 		{
 			on = false;
 		}
+
+		if (myAudioSources [1].isPlaying) {
+			CountSustainLoop ();
+		}
 		
 	}
 
 	void StartSink() {
+
+		attackDSPTime = AudioSettings.dspTime;
+		sustainStartDSPTime = attackDSPTime + onSound.length;
+
 		myAudioSources [0].Play ();
-		myAudioSources [1].PlayDelayed (0.2f);
+		myAudioSources [1].PlayScheduled (sustainStartDSPTime);
 		myAudioSources [1].loop = true;
 		adScript.PlayAd ();
 	}
 	void StopSink() {
-		myAudioSources [2].Play ();
-		myAudioSources [1].Stop ();
+
+		releaseDSPTime = attackDSPTime + onSound.length + (onLoop.length * loopCount);
+
+		myAudioSources [2].PlayScheduled (releaseDSPTime);
+		myAudioSources [1].SetScheduledEndTime (releaseDSPTime);
+
+		loopCount = 1;
+	}
+
+	void CountSustainLoop() {
+
+		myAudioSources[1].loop = true;
+		if (prevSustainSamples > myAudioSources[1].timeSamples) {
+			loopCount++;
+		}
+		prevSustainSamples = myAudioSources[1].timeSamples;
+
 	}
 }
