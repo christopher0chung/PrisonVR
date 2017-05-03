@@ -22,7 +22,7 @@ public class HeadUnderwater : MonoBehaviour {
 	void OnTriggerEnter(Collider other) {
 		if (other.gameObject.name == "WaterTrigger") {
 			lowPass.enabled = true;
-			lowPass.cutoffFrequency = 500f;
+			lowPass.cutoffFrequency = 1000f;
 			lowPass.lowpassResonanceQ = 1.2f;
 		}
 	}
