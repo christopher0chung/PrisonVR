@@ -5,12 +5,14 @@ public class Advertisement: MonoBehaviour {
 	public MovieTexture[] movieTextures;
 	public AudioClip[] movieAudio;
 
-	MovieTexture currentMovie;
+	public bool adPlaying;
+
+	public MovieTexture currentMovie;
 
 	AudioSource movieSource;
 	float playTime;
 
-	int index;
+	public int index;
 
 	void Awake() {
 		
@@ -27,9 +29,12 @@ public class Advertisement: MonoBehaviour {
 	void Update() {
 
 		if (movieSource.isPlaying) {
-			//Debug.Log ("isPLaying");
+			adPlaying = true;
+		} else {
+			adPlaying = false;
 		}
-		
+
+
 	}
 
 	public void PlayAd () { 
@@ -38,9 +43,11 @@ public class Advertisement: MonoBehaviour {
 		//this code is annoying; movie textures are apparently really finnicky about starting/stopping
 		if (movieSource) {
 			movieSource.Stop ();
+			//adPlaying = false;
 		}
 		if (currentMovie) {
 			currentMovie.Stop ();
+
 		}
 		GetComponent<Renderer>().material.SetTexture("_emissiveTexture", movieTextures[(index + 1) % movieTextures.Length]);
 		currentMovie = movieTextures [(index + 1) % movieTextures.Length];
