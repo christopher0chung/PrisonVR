@@ -26,9 +26,6 @@ public class PrisonAudioDirector : MonoBehaviour {
 
 	[SerializeField] GameObject myPrefabSFX;
 
-	[SerializeField] AudioSource myAudioSource;
-
-
 	[SerializeField] AudioMixerGroup SFXGroup;
 
 
