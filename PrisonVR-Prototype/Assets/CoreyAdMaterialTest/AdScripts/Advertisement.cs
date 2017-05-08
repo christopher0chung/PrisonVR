@@ -5,7 +5,22 @@ public class Advertisement: MonoBehaviour {
 	public MovieTexture[] movieTextures;
 	public AudioClip[] movieAudio;
 
-	public bool adPlaying;
+    private bool _adPlaying;
+	public bool adPlaying
+    {
+        get
+        {
+            return _adPlaying;
+        }
+        set
+        {
+            if (value != _adPlaying)
+            {
+                _adPlaying = value;
+                EventManager.instance.Fire(new Commercial_GE(_adPlaying));
+            }
+        }
+    }
 
 	public MovieTexture currentMovie;
 
