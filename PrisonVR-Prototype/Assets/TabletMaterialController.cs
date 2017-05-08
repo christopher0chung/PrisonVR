@@ -54,14 +54,17 @@ public class TabletMaterialController : MonoBehaviour {
 
     void OnCollisionEnter(Collision other)
     {
-        if (other.gameObject.GetComponent<ObjectsTypeTag>().thisCollidersTag == TypeTag.Hard)
+        if (other.gameObject.GetComponent<ObjectsTypeTag>() != null)
         {
-            if (_velocityMagnitude >= breakThreshold)
+            if (other.gameObject.GetComponent<ObjectsTypeTag>().thisCollidersTag == TypeTag.Hard)
             {
-                glassMR.material = brokenGlass;
+                if (_velocityMagnitude >= breakThreshold)
+                {
+                    glassMR.material = brokenGlass;
+                }
             }
+            if (other.gameObject.GetComponent<ObjectsTypeTag>().thisCollidersTag == TypeTag.Wet)
+                _wasWetted = true;
         }
-        if (other.gameObject.GetComponent<ObjectsTypeTag>().thisCollidersTag == TypeTag.Wet)
-            _wasWetted = true;
     }
 }
