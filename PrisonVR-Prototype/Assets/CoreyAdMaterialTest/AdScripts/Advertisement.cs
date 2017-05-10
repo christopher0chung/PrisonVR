@@ -22,6 +22,8 @@ public class Advertisement: MonoBehaviour {
         }
     }
 
+	public bool AdTriggerOverride;
+
 	public MovieTexture currentMovie;
 
 	AudioSource movieSource;
@@ -30,6 +32,8 @@ public class Advertisement: MonoBehaviour {
 	public int index;
 
 	void Awake() {
+
+		AdTriggerOverride = false;
 		
 		GetComponent<Renderer>().material.SetTexture("_emissiveTexture", movieTextures[0]);
 		movieSource = GetComponent<AudioSource>();
@@ -42,6 +46,12 @@ public class Advertisement: MonoBehaviour {
 	}
 
 	void Update() {
+
+		if (AdTriggerOverride) {
+
+			PlayAd ();
+			AdTriggerOverride = false;
+		}
 
 		if (movieSource.isPlaying) {
 			adPlaying = true;

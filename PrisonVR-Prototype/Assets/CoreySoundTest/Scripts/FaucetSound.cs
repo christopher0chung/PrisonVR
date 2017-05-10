@@ -46,7 +46,7 @@ public class FaucetSound : MonoBehaviour {
 
 		//startDSPTime = AudioSettings.dspTime;
 
-		adScript = GameObject.Find ("TempAdScreen").GetComponent<Advertisement> ();
+		adScript = GameObject.Find ("TempAdScreen1").GetComponent<Advertisement> ();
 
 		myBPP = GameObject.FindGameObjectWithTag("FaucetButton").GetComponent<ButtonPressPercent> ();
 		myAudioSources = GetComponents<AudioSource> ();
