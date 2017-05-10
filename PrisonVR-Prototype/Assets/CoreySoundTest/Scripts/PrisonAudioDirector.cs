@@ -27,6 +27,7 @@ public class PrisonAudioDirector : MonoBehaviour {
 	public AudioClip keyCardIncrementSound;
 	public AudioClip keyCardAcceptSound;
 	public AudioClip keyCardRejectSound;
+	public AudioClip openDoorSound;
 
 
 	[SerializeField] GameObject myPrefabSFX;

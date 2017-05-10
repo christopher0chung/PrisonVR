@@ -14,7 +14,7 @@ public class OpenDoor : MonoBehaviour {
 	void Update () {
 		if (Input.GetKeyDown(KeyCode.O)) {
 			startOpen = true;
-			PrisonAudioDirector.instance.Play3DSFX(PrisonAudioDirector
+			PrisonAudioDirector.instance.Play3DSFX (PrisonAudioDirector.instance.openDoorSound, transform.position, 0f);
 		}
 
 		if (startOpen) MoveDoor();
