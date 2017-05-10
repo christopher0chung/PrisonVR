@@ -41,19 +41,31 @@ public class CardText : MonoBehaviour {
             _startTimer = g.playTrueEndFalse;
             if (g.playTrueEndFalse)
             {
+                Debug.Log("Timers initialized and started");
                 _timer = 0;
                 _watchTimer = 0;
             }
             else
             {
                 if (_watchTimer * 2 >= _timer)
+                {
                     watched++;
+                    Debug.Log(watched);
+                }
             }
         }
         if (e.GetType() == typeof(Look_GE))
         {
             Look_GE l = (Look_GE)e;
             _startWatchTimer = l.lookingTrueNotFalse;
+            if(_startWatchTimer)
+            {
+                Debug.Log("watching");
+            }
+            else
+            {
+                Debug.Log("not watching");
+            }
         }
     }
 }
