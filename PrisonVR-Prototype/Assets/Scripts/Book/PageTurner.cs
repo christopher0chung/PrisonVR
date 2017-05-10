@@ -100,7 +100,7 @@ public class PageTurner : MonoBehaviour {
 
 	bool IsRight (Vector3 pos) {
 		float dot = Vector3.Dot((pos - transform.position).normalized, (transform.position + transform.right));
-		return (dot > 0);
+		return (dot < 0);
 	}
 
 	bool IsTurningPage (Vector3 startPos, Vector3 currentPos) {

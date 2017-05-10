@@ -24,6 +24,11 @@ public class CardText : MonoBehaviour {
         if(_startTimer)
         {
             _timer += Time.deltaTime;
+            if (_timer >= 10)
+            {
+                watched++;
+                _startTimer = false;
+            }
         }
         if(_startWatchTimer)
         {
@@ -44,17 +49,6 @@ public class CardText : MonoBehaviour {
                 Debug.Log("Timers initialized and started");
                 _timer = 0;
                 _watchTimer = 0;
-            }
-            else
-            {
-                if (_watchTimer * 2 >= _timer)
-                {
-                    watched++;
-                    Debug.Log(watched);
-					PrisonAudioDirector.instance.Play3DSFX (
-						PrisonAudioDirector.instance.keyCardIncrementSound, transform.position, 0f
-					);
-                }
             }
         }
         if (e.GetType() == typeof(Look_GE))
