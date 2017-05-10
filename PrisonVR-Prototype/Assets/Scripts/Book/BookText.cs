@@ -53,8 +53,8 @@ public class BookText : MonoBehaviour {
 	}
 
 	public void SetPages () {
-		for(int i = 1; i <= pagesText.Length; i++) {
-			pagesText[i - 1].text = GetPage(currentPageIndex + i);
+		for(int i = 0; i < pagesText.Length; i++) {
+			pagesText[i].text = GetPage(currentPageIndex + i);
 		}
 	}
 
