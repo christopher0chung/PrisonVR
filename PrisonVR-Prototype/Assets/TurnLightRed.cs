@@ -10,6 +10,14 @@ public class Commercial_GE : GameEvent
         playTrueEndFalse = b;
     }
 }
+public class Look_GE : GameEvent
+{
+    public bool lookingTrueNotFalse;
+    public Look_GE(bool b)
+    {
+        lookingTrueNotFalse = b;
+    }
+}
 
 public class TurnLightRed : MonoBehaviour {
 
@@ -41,8 +49,15 @@ public class TurnLightRed : MonoBehaviour {
         if (_commercialIsPlaying)
         {
             if (_myHits.Length > 0)
+            {
                 myLight.color = startColor;
-            else myLight.color = Color.red;
+                EventManager.instance.Fire(new Look_GE(true));
+            }
+            else
+            {
+                myLight.color = Color.red;
+                EventManager.instance.Fire(new Look_GE(false));
+            }
         }
         else myLight.color = startColor;
 	}
