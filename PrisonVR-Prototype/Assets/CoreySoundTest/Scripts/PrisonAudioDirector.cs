@@ -22,6 +22,9 @@ public class PrisonAudioDirector : MonoBehaviour {
 	public AudioClip plexiScrape;
 	public AudioClip metalScrape;
 	public AudioClip mattressPress, mattressRelease;
+	public AudioClip keyCardIncrementSound;
+	public AudioClip keyCardAcceptSound;
+	public AudioClip keyCardRejectSound;
 
 
 	[SerializeField] GameObject myPrefabSFX;

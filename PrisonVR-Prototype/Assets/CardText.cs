@@ -51,6 +51,9 @@ public class CardText : MonoBehaviour {
                 {
                     watched++;
                     Debug.Log(watched);
+					PrisonAudioDirector.instance.Play3DSFX (
+						PrisonAudioDirector.instance.keyCardIncrementSound, transform.position, 0f
+					);
                 }
             }
         }
