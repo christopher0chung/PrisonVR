@@ -24,6 +24,14 @@ public class CardText : MonoBehaviour {
         if(_startTimer)
         {
             _timer += Time.deltaTime;
+            if (_timer >= 10)
+            {
+                if (_watchTimer >= 5)
+                {
+                    watched++;
+                }
+                _startTimer = false;
+            }
         }
         if(_startWatchTimer)
         {
@@ -44,14 +52,6 @@ public class CardText : MonoBehaviour {
                 Debug.Log("Timers initialized and started");
                 _timer = 0;
                 _watchTimer = 0;
-            }
-            else
-            {
-                if (_watchTimer * 2 >= _timer)
-                {
-                    watched++;
-                    Debug.Log(watched);
-                }
             }
         }
         if (e.GetType() == typeof(Look_GE))
