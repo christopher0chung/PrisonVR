@@ -1,0 +1,124 @@
+fileFormatVersion: 2
+guid: ba9e8778a4475f746abffb25e71dd9c9
+timeCreated: 1494370478
+licenseType: Pro
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: RearPanel_MeshPart0
+    100002: RearPanel_MeshPart1
+    100004: //RootNode
+    100006: FrontGlass
+    100008: HomeButton
+    100010: InnerPanel
+    100012: LockSwitch
+    100014: PowerButton
+    100016: Screen
+    100018: VolumeButton
+    400000: RearPanel_MeshPart0
+    400002: RearPanel_MeshPart1
+    400004: //RootNode
+    400006: FrontGlass
+    400008: HomeButton
+    400010: InnerPanel
+    400012: LockSwitch
+    400014: PowerButton
+    400016: Screen
+    400018: VolumeButton
+    2300000: RearPanel_MeshPart0
+    2300002: RearPanel_MeshPart1
+    2300004: FrontGlass
+    2300006: HomeButton
+    2300008: InnerPanel
+    2300010: LockSwitch
+    2300012: PowerButton
+    2300014: Screen
+    2300016: VolumeButton
+    3300000: RearPanel_MeshPart0
+    3300002: RearPanel_MeshPart1
+    3300004: FrontGlass
+    3300006: HomeButton
+    3300008: InnerPanel
+    3300010: LockSwitch
+    3300012: PowerButton
+    3300014: Screen
+    3300016: VolumeButton
+    4300000: RearPanel_MeshPart0
+    4300002: RearPanel_MeshPart1
+    4300004: Screen
+    4300006: FrontGlass
+    4300008: PowerButton
+    4300010: VolumeButton
+    4300012: HomeButton
+    4300014: InnerPanel
+    4300016: LockSwitch
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 10
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
