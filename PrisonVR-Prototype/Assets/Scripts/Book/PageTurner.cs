@@ -16,35 +16,35 @@ public class PageTurner : MonoBehaviour {
 	bool isTurning = false;
 
 
-	void HandHoverUpdate ( Hand hand ) {
-		// this applies to either Vive controller, "Hand" can be abstracted as anything
-		// on Vive controller, by default "StandardInteractionButton" is the trigger
-		// lastly, we check AttachedObjects.Count to make sure you pick up only 1 thing at a time
-		// if ( hand.GetStandardInteractionButton() == true && hand.AttachedObjects.Count == 0 ) { 
-		// 	hand.AttachObject( gameObject );
-		// }
-		turnDirection = transform.right;
-		if (hand.AttachedObjects.Count == 0) {
-			if (!isTurning) {
-				startPos = hand.transform.position;
-				hasTurnedPage = false;
-			}
+	// void HandHoverUpdate ( Hand hand ) {
+	// 	// this applies to either Vive controller, "Hand" can be abstracted as anything
+	// 	// on Vive controller, by default "StandardInteractionButton" is the trigger
+	// 	// lastly, we check AttachedObjects.Count to make sure you pick up only 1 thing at a time
+	// 	// if ( hand.GetStandardInteractionButton() == true && hand.AttachedObjects.Count == 0 ) { 
+	// 	// 	hand.AttachObject( gameObject );
+	// 	// }
+	// 	turnDirection = transform.right;
+	// 	if (hand.AttachedObjects.Count == 0) {
+	// 		if (!isTurning) {
+	// 			startPos = hand.transform.position;
+	// 			hasTurnedPage = false;
+	// 		}
 
-			if (hand.GetStandardInteractionButton()) {
-				isTurning = true;
-				if (!hasTurnedPage) {
-					if (IsTurningPage(startPos, hand.transform.position)) {
-						if (IsTurningForward(startPos, hand.transform.position)) {
-							bookText.TurnPageForward();
-						}
-						else {
-							bookText.TurnPageBack();
-						}
-					}
-				}
-			}
-		} 
-	}
+	// 		if (hand.GetStandardInteractionButton()) {
+	// 			isTurning = true;
+	// 			if (!hasTurnedPage) {
+	// 				if (IsTurningPage(startPos, hand.transform.position)) {
+	// 					if (IsTurningForward(startPos, hand.transform.position)) {
+	// 						bookText.TurnPageForward();
+	// 					}
+	// 					else {
+	// 						bookText.TurnPageBack();
+	// 					}
+	// 				}
+	// 			}
+	// 		}
+	// 	} 
+	// }
 
 	// void OnCollisionEnter (Collision c) {
 	// 	if (c.gameObject.tag == "Hand") {
@@ -87,6 +87,21 @@ public class PageTurner : MonoBehaviour {
 	// void OnCollisionExit (Collision c) {
 	// 	if (c.gameObject.tag == "Hand") hasTurnedPage = false;
 	// }
+
+
+	void OnTriggerEnter (Collider c) {
+		if (IsRight(c.transform.position)) {
+			bookText.TurnPageForward();
+		}
+		else {
+			bookText.TurnPageBack();
+		}
+	}
+
+	bool IsRight (Vector3 pos) {
+		float dot = Vector3.Dot((pos - transform.position).normalized, (transform.position + transform.right));
+		return (dot > 0);
+	}
 
 	bool IsTurningPage (Vector3 startPos, Vector3 currentPos) {
 		Vector3 axisAlignedDirection = MultiplyVector3((currentPos - startPos), turnDirection);
