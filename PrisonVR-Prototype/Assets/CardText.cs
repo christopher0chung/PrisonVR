@@ -26,10 +26,7 @@ public class CardText : MonoBehaviour {
             _timer += Time.deltaTime;
             if (_timer >= 10)
             {
-                if (_watchTimer >= 5)
-                {
-                    watched++;
-                }
+                watched++;
                 _startTimer = false;
             }
         }
