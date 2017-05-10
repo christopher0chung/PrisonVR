@@ -27,6 +27,7 @@ public class CardText : MonoBehaviour {
             if (_timer >= 10)
             {
                 watched++;
+				PrisonAudioDirector.instance.Play3DSFX (PrisonAudioDirector.instance.keyCardIncrementSound, transform.position, 0f);
                 _startTimer = false;
             }
         }

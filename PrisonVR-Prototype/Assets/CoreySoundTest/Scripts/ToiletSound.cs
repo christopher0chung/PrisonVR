@@ -40,7 +40,7 @@ public class ToiletSound : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
-		adScript = GameObject.Find ("TempAdScreen").GetComponent<Advertisement> ();
+		adScript = GameObject.Find ("TempAdScreen1").GetComponent<Advertisement> ();
 
 		myBPP = GameObject.FindGameObjectWithTag ("ToiletButton").GetComponent<ButtonPressPercent> ();
 		myAudioSources = GetComponents<AudioSource> ();
