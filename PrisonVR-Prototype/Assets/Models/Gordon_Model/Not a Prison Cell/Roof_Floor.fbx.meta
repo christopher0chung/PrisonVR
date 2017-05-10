@@ -6,10 +6,20 @@ ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
     100000: //RootNode
+    100002: polySurface3
+    100004: polySurface4
     400000: //RootNode
+    400002: polySurface3
+    400004: polySurface4
     2300000: //RootNode
+    2300002: polySurface3
+    2300004: polySurface4
     3300000: //RootNode
+    3300002: polySurface3
+    3300004: polySurface4
     4300000: polySurface2
+    4300002: polySurface3
+    4300004: polySurface4
   materials:
     importMaterials: 1
     materialName: 0
