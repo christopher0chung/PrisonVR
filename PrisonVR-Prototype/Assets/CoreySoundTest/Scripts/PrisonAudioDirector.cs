@@ -18,6 +18,8 @@ public class PrisonAudioDirector : MonoBehaviour {
 	public AudioClip[] plexiImpact;
 	public AudioClip steelImpact, steelDoorImpact, mattressImpact, waterImpact;
 
+	public AudioClip[] tabletImpactSounds;
+
 	public AudioClip concreteScrape;
 	public AudioClip plexiScrape;
 	public AudioClip metalScrape;

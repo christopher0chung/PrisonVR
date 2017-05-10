@@ -58,6 +58,13 @@ public class TabletMaterialController : MonoBehaviour {
         {
             if (other.gameObject.GetComponent<ObjectsTypeTag>().thisCollidersTag == TypeTag.Hard)
             {
+
+				PrisonAudioDirector.instance.Play3DSFX (
+					PrisonAudioDirector.instance.tabletImpactSounds [Random.Range (0, PrisonAudioDirector.instance.tabletImpactSounds.Length)],
+					transform.position,
+					0f
+				);
+
                 if (_velocityMagnitude >= breakThreshold)
                 {
                     glassMR.material = brokenGlass;
